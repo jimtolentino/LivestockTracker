@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Livestock Tracker</string>
+
+    <string name="text_livestock">Livestock</string>
+    <string name="text_scan">Scan</string>
+    <string name="text_notification">Notifications</string>
+    <string name="text_goatnum">JT-100</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_refresh">Settings</string>
+    <string name="action_new">Settings</string>
+
+    <string name="label_eartagnum">Ear Tag Number: JT-100</string>
+    <string name="label_type">Type: Goat</string>
+    <string name="label_breed">Breed: Boer</string>
+    <string name="label_weight">Weight: 30 Kilos</string>
+    <string name="label_housenum">House Number: 7</string>
+
+    <string name="field_eartagnum">JT-100</string>
+    <string name="field_type">Goat</string>
+    <string name="field_breed">Boer</string>
+    <string name="field_weight">30 Kilos</string>
+    <string name="field_housenum">7</string>
+
+    <string name="text_filter_type">Type</string>
+    <string name="text_filter_breed">Breed</string>
+    <string name="text_filter_houseNum">House Number</string>
+
+    <string-array name="lstocktype_array">
+        <item>Goat</item>
+        <item>Chicken</item>
+        <item>Horse</item>
+        <item>Cow</item>
+        <item>Sheep</item>
+    </string-array>
+
+    <string-array name="lstockbreed_array">
+        <item>Boer</item>
+        <item>Type2</item>
+        <item>Type3</item>
+        <item>Type4</item>
+        <item>Type5</item>
+    </string-array>
+
+    <string-array name="lstockhnum_array">
+        <item>House# 1</item>
+        <item>House# 2</item>
+        <item>House# 3</item>
+        <item>House# 4</item>
+        <item>House# 5</item>
+    </string-array>
+
+    <string name="type_to_search">Type to Search</string>
+
+    <string name="error_unauthorized">Invalid email/password!</string>
+    <string name="button_signIn">Login</string>
+
+    <string name="label_lgnum">Livestock Number</string>
+    <string name="label_lgtype">Type</string>
+    <string name="label_lgBreed">Breed</string>
+    <string name="label_lghouseNum">House Number</string>
+    <string name="label_lgweight">Weight</string>
+
+
+</resources>

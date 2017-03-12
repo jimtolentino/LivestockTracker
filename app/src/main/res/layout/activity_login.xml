@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_splash" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="32dp">
+        <TextView
+            android:textStyle="bold"
+            android:textColor="@color/colorError"
+            android:id="@+id/error_unauthorized"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/error_unauthorized"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp"/>
+        <EditText
+            android:layout_width="@dimen/button_width"
+            android:layout_height="40dp"
+            android:inputType="textEmailAddress"
+            android:id="@+id/input_email"
+            android:hint="email"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp"/>
+        <EditText
+            android:layout_width="@dimen/button_width"
+            android:layout_height="40dp"
+            android:inputType="textPassword"
+            android:id="@+id/input_password"
+            android:hint="password"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp"/>
+        <Button
+            android:background="@color/colorAccent"
+            android:text="@string/button_signIn"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="30dp"
+            android:id="@+id/button_signIn"
+            android:layout_margin="4dp"
+            android:layout_gravity="center_horizontal"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
