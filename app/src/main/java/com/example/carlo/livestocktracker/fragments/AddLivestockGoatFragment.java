@@ -36,6 +36,20 @@ public class AddLivestockGoatFragment extends Fragment {
         //Inflate the layout for this fragment_packages
         final View fragmentview = inflater.inflate(R.layout.fragment_addgoat, container, false);
 
+
+////        scannerFragment = new ScannerFragment();
+////        scannerFragment.handleResult(this);
+////        tv_goatNum.setOnClickListener();
+
+
+
+        return fragmentview;
+    }
+
+    @Override
+    public void onViewCreated(View fragmentview, Bundle savedInstanceState) {
+        // save views as variables in this method
+        // "view" is the one returned from onCreateView
         btn_addgoat = (Button) fragmentview.findViewById(R.id.btn_addgoat);
 
         tId = (EditText)fragmentview.findViewById(R.id.tvf_lgid);
@@ -54,10 +68,6 @@ public class AddLivestockGoatFragment extends Fragment {
         sWeight = tWeight.getText().toString();
 //        iPhoto = Integer.parseInt(tPhoto.getI().toString());
 
-//        scannerFragment = new ScannerFragment();
-//        scannerFragment.handleResult(this);
-//        tv_goatNum.setOnClickListener();
-
         btn_addgoat.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -72,18 +82,11 @@ public class AddLivestockGoatFragment extends Fragment {
 
                 DBHandler db = new DBHandler(getActivity());
                 db.addLivestock(livestock);
-//                RequestParams params = new RequestParams();
-//                params.put(emailParam, email.getText());
-//                params.put(passwordParam, password.getText());
-//                authenticate(params);
-//                loginView.showLoader();
+
             }
         });
 
-        return fragmentview;
     }
-
-
 
 
 }
