@@ -55,6 +55,7 @@
     <string name="error_unauthorized">Invalid email/password!</string>
     <string name="button_signIn">Login</string>
 
+    <string name="label_id">ID</string>
     <string name="label_lgnum">Livestock Number</string>
     <string name="label_lgtype">Type</string>
     <string name="label_lgBreed">Breed</string>

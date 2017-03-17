@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.example.carlo.livestocktracker.fragments.AddLivestockGoatFragment;
 import com.example.carlo.livestocktracker.fragments.LivestockFragment;
 import com.example.carlo.livestocktracker.fragments.ScannerFragment;
 import com.google.zxing.Result;
@@ -63,9 +64,9 @@ public class MainActivity extends AppCompatActivity{
                             fr = new LivestockFragment();
                         } else if (id == R.id.nav_scan) {
                             fr = new ScannerFragment();
-                        } /*else if (id == R.id.nav_packages) {
-                            fr = new PackagesFragment();
-                        }*/
+                        } else if (id == R.id.nav_notifications) {
+                            fr = new AddLivestockGoatFragment();
+                        }
                         FragmentManager fm = getFragmentManager();
                         FragmentTransaction fragmentTransaction = fm.beginTransaction();
                         fragmentTransaction.replace(R.id.fragment_container, fr);
