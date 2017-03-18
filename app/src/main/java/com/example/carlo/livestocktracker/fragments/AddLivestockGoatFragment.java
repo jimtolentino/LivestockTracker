@@ -1,9 +1,8 @@
 package com.example.carlo.livestocktracker.fragments;
 
 import android.app.Fragment;
-import android.database.CursorJoiner;
-import android.database.sqlite.SQLiteDatabase;
-import android.media.Image;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +12,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.carlo.livestocktracker.DBHandler;
 import com.example.carlo.livestocktracker.Livestock;
+import com.example.carlo.livestocktracker.dbhandlers.LivestockDBHandler;
 import com.example.carlo.livestocktracker.R;
 
 /**
@@ -60,16 +59,17 @@ public class AddLivestockGoatFragment extends Fragment {
         tHouseNum = (EditText)fragmentview.findViewById(R.id.et_lghouseNum);
         tWeight = (EditText)fragmentview.findViewById(R.id.et_lgweight);
 
-        iId = Integer.parseInt(tId.getText().toString());
-        sGoatNum = tGoatNum.getText().toString();
-        sType = tType.getText().toString();
-        sBreed = tBreed.getText().toString();
-        sHouseNum = tHouseNum.getText().toString();
-        sWeight = tWeight.getText().toString();
-//        iPhoto = Integer.parseInt(tPhoto.getI().toString());
+
 
         btn_addgoat.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                iId = Integer.parseInt(tId.getText().toString());
+                sGoatNum = tGoatNum.getText().toString();
+                sType = tType.getText().toString();
+                sBreed = tBreed.getText().toString();
+                sHouseNum = tHouseNum.getText().toString();
+                sWeight = tWeight.getText().toString();
 
                 Livestock livestock = new Livestock();
 
@@ -79,9 +79,17 @@ public class AddLivestockGoatFragment extends Fragment {
                 livestock.setBreed(sBreed);
                 livestock.setHouseNum(sHouseNum);
                 livestock.setWeight(sWeight);
+//        iPhoto = Integer.parseInt(tPhoto.getI().toString());
 
-                DBHandler db = new DBHandler(getActivity());
+                LivestockDBHandler db = new LivestockDBHandler(getActivity());
                 db.addLivestock(livestock);
+                Fragment fr = null;
+                fr = new LivestockFragment();
+
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fr);
+                fragmentTransaction.commit();
 
             }
         });

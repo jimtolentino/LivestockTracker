@@ -8,14 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.carlo.livestocktracker.DBHandler;
 import com.example.carlo.livestocktracker.Livestock;
+import com.example.carlo.livestocktracker.dbhandlers.LivestockDBHandler;
 import com.example.carlo.livestocktracker.R;
 import com.example.carlo.livestocktracker.adapters.LivestockAdapter;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Carlo on 3/4/2017.
@@ -49,7 +47,7 @@ public class LivestockFragment extends Fragment {
 
     private ArrayList<Livestock> initLivestocks(){
 
-        DBHandler db = new DBHandler(getActivity());
+        LivestockDBHandler db = new LivestockDBHandler(getActivity());
 //        db.addLivestock(new Livestock(1,"JT-137", R.drawable.goat410,"Goat","Boer","House # 8","40 kg"));
 
         ArrayList<Livestock> livestock = db.getAllLivestock();

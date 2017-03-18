@@ -1,4 +1,4 @@
-package com.example.carlo.livestocktracker;
+package com.example.carlo.livestocktracker.dbhandlers;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,16 +7,19 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.carlo.livestocktracker.Livestock;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.attr.id;
 import static android.R.attr.tag;
 
 /**
  * Created by Carlo on 3/11/2017.
  */
 
-public class DBHandler extends SQLiteOpenHelper {
+public class LivestockDBHandler extends SQLiteOpenHelper {
 
     // Database Version
     private static final int DATABASE_VERSION = 1;
@@ -32,7 +35,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String lsd_houseNum_c = "c_ls_houseNum";
     private static final String lsd_weight_c = "c_ls_weight";
 
-    public DBHandler(Context context){
+    public LivestockDBHandler(Context context){
         super(context, DATABASE_NAME, null,DATABASE_VERSION);
     }
 
@@ -47,7 +50,7 @@ public class DBHandler extends SQLiteOpenHelper {
                                            + lsd_weight_c + " TEXT" +
                                         ")";
         db.execSQL(create_ls_details_tbl);
-        System.out.println("test");
+//        System.out.println("test");
 
 
     }
@@ -58,7 +61,7 @@ public class DBHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // Adding new shop
+    // Adding new livestock
     public void addLivestock(Livestock livestock) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -72,6 +75,24 @@ public class DBHandler extends SQLiteOpenHelper {
     // Inserting Row
         db.insert(ls_details_tbl, null, values);
         db.close(); // Closing database connection
+    }
+
+    public void updateLivestock(Livestock livestock){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(lsd_id_c, livestock.getId());
+        values.put(lsd_tagNumber_c, livestock.getNum());
+        values.put(lsd_type_c, livestock.getType());
+        values.put(lsd_breed_c, livestock.getBreed());
+        values.put(lsd_houseNum_c, livestock.getHouseNum());
+        values.put(lsd_weight_c, livestock.getWeight());
+
+        String[] whereClauseArgument = new String[1];
+        whereClauseArgument[0] = livestock.getNum();
+
+        db.update(ls_details_tbl, values, lsd_tagNumber_c+"=?", whereClauseArgument);
+
     }
 
     public Livestock getLivestock(int id){
@@ -109,7 +130,7 @@ public class DBHandler extends SQLiteOpenHelper {
             }while (cursor.moveToNext());
         }
 //        System.out.println(cursor.getColumnNames() + "a");
-        Log.d("tag", cursor + "asasda");
+//        Log.d("tag", cursor + "asasda");
         return livestockList;
 
     }
