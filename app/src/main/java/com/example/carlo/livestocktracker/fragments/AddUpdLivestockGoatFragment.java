@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.carlo.livestocktracker.Livestock;
+import com.example.carlo.livestocktracker.objects.Livestock;
 import com.example.carlo.livestocktracker.dbhandlers.LivestockDBHandler;
 import com.example.carlo.livestocktracker.R;
 
@@ -20,7 +20,7 @@ import com.example.carlo.livestocktracker.R;
  * Created by Carlo on 3/4/2017.
  */
 
-public class AddLivestockGoatFragment extends Fragment {
+public class AddUpdLivestockGoatFragment extends Fragment {
 
     private TextView tv_goatNum;
     private Button btn_addgoat;
@@ -33,7 +33,7 @@ public class AddLivestockGoatFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //Inflate the layout for this fragment_packages
-        final View fragmentview = inflater.inflate(R.layout.fragment_addgoat, container, false);
+        final View fragmentview = inflater.inflate(R.layout.fragment_addupdategoat, container, false);
 
 
 ////        scannerFragment = new ScannerFragment();
@@ -49,7 +49,7 @@ public class AddLivestockGoatFragment extends Fragment {
     public void onViewCreated(View fragmentview, Bundle savedInstanceState) {
         // save views as variables in this method
         // "view" is the one returned from onCreateView
-        btn_addgoat = (Button) fragmentview.findViewById(R.id.btn_addgoat);
+        btn_addgoat = (Button) fragmentview.findViewById(R.id.btn_save);
 
         tId = (EditText)fragmentview.findViewById(R.id.tvf_lgid);
         tGoatNum = (EditText)fragmentview.findViewById(R.id.tvf_lgnum);
@@ -83,6 +83,7 @@ public class AddLivestockGoatFragment extends Fragment {
 
                 LivestockDBHandler db = new LivestockDBHandler(getActivity());
                 db.addLivestock(livestock);
+
                 Fragment fr = null;
                 fr = new LivestockFragment();
 

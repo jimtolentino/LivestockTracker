@@ -4,4 +4,11 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="button_width">90dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="in_lgid">90dp</dimen>
+    <dimen name="in_lgnum">200dp</dimen>
+    <dimen name="in_lgtype">130dp</dimen>
+    <dimen name="in_lgbreed">130dp</dimen>
+    <dimen name="in_lghousenum">130dp</dimen>
+    <dimen name="in_lgweight">130dp</dimen>
 </resources>

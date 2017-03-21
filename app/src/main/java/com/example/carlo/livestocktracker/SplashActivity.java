@@ -3,7 +3,8 @@ package com.example.carlo.livestocktracker;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+
+import com.example.carlo.livestocktracker.activities.LoginActivity;
 
 /**
  * Created by Carlo on 3/4/2017.

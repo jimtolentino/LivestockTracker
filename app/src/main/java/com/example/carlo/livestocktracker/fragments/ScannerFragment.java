@@ -1,8 +1,6 @@
 package com.example.carlo.livestocktracker.fragments;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.carlo.livestocktracker.MainActivity;
 import com.example.carlo.livestocktracker.R;
 import com.google.zxing.Result;
-
-import org.w3c.dom.Text;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -81,7 +76,7 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
 //        System.out.println("Test" + result.getText());
 //        FragmentManager fm = getFragmentManager();
 //        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-//        fragmentTransaction.replace(R.id.fragment_container, new AddLivestockGoatFragment());
+//        fragmentTransaction.replace(R.id.fragment_container, new AddUpdLivestockGoatFragment());
 //        fragmentTransaction.commit();
 
         tvResult = result.getText();

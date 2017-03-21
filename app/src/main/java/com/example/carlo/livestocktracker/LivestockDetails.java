@@ -1,6 +1,5 @@
 package com.example.carlo.livestocktracker;
 
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -13,7 +12,7 @@ public class LivestockDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.detail_livestock);
+        setContentView(R.layout.fragment_detail_livestock);
         imageView = (ImageView) findViewById(R.id.detail_lstock_photo);
         tv_goatNum = (TextView)findViewById(R.id.detail_label_eartag_num);
         tv_breed = (TextView)findViewById(R.id.detail_label_breed);

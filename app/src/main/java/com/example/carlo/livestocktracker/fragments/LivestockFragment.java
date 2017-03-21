@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.carlo.livestocktracker.Livestock;
+import com.example.carlo.livestocktracker.objects.Livestock;
 import com.example.carlo.livestocktracker.dbhandlers.LivestockDBHandler;
 import com.example.carlo.livestocktracker.R;
 import com.example.carlo.livestocktracker.adapters.LivestockAdapter;
@@ -33,7 +33,7 @@ public class LivestockFragment extends Fragment {
     private void initLivestockView(View view){
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(),3);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 3);
         recyclerView.setLayoutManager(layoutManager);
 
         ArrayList<Livestock> livestockList = initLivestocks();

@@ -24,7 +24,7 @@
             android:layout_gravity="center_horizontal"
             android:padding="8dp"/>
         <EditText
-            android:layout_width="@dimen/button_width"
+            android:layout_width="100dp"
             android:layout_height="40dp"
             android:inputType="textEmailAddress"
             android:id="@+id/input_email"
@@ -34,7 +34,7 @@
             android:layout_gravity="center_horizontal"
             android:padding="8dp"/>
         <EditText
-            android:layout_width="@dimen/button_width"
+            android:layout_width="110dp"
             android:layout_height="40dp"
             android:inputType="textPassword"
             android:id="@+id/input_password"
@@ -46,7 +46,7 @@
         <Button
             android:background="@color/colorAccent"
             android:text="@string/button_signIn"
-            android:layout_width="@dimen/button_width"
+            android:layout_width="100dp"
             android:layout_height="30dp"
             android:id="@+id/button_signIn"
             android:layout_margin="4dp"

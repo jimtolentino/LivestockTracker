@@ -1,4 +1,4 @@
-package com.example.carlo.livestocktracker;
+package com.example.carlo.livestocktracker.adapters;
 
 /**
  * Created by Carlo on 2/12/2017.
@@ -10,10 +10,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.carlo.livestocktracker.R;
+import com.example.carlo.livestocktracker.fragments.LivestockDetailsFragment;
+import com.example.carlo.livestocktracker.objects.Livestock;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener{
 
@@ -45,7 +47,7 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
         int position = getAdapterPosition();
         Livestock livestock = this.livestock.get(position);
 
-        Intent intent = new Intent(this.context, LivestockDetails.class);
+        Intent intent = new Intent(this.context, LivestockDetailsFragment.class);
         intent.putExtra("goatNum", livestock.getNum());
         intent.putExtra("img_id", livestock.getPhoto());
         intent.putExtra("type", livestock.getType());

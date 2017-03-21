@@ -1,0 +1,106 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fl_formAddGoat"
+    android:scrollbars="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_lstockpic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="@dimen/in_lgid"
+                android:layout_height="50dp"
+                android:inputType="text"
+                android:id="@+id/tvf_lgid"
+                android:hint="ID"
+                android:padding="8dp"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="@dimen/in_lgnum"
+                android:layout_height="50dp"
+                android:inputType="text"
+                android:id="@+id/tvf_lgnum"
+                android:hint="Livestock Number"
+                android:padding="8dp"/>
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="@dimen/in_lgtype"
+                android:layout_height="50dp"
+                android:inputType="text"
+                android:id="@+id/sp_lgtype"
+                android:hint="Type"
+                android:padding="4dp"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="@dimen/in_lgbreed"
+                android:layout_height="50dp"
+                android:inputType="text"
+                android:id="@+id/sp_lgbreed"
+                android:hint="Breed"
+                android:padding="4dp"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="@dimen/in_lghousenum"
+                android:layout_height="50dp"
+                android:inputType="text"
+                android:id="@+id/et_lghouseNum"
+                android:hint="House Number"
+                android:padding="4dp"/>
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="@dimen/in_lgweight"
+                android:layout_height="50dp"
+                android:inputType="text"
+                android:id="@+id/et_lgweight"
+                android:hint="Weight"
+                android:padding="4dp"/>
+        </android.support.design.widget.TextInputLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save_btn"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

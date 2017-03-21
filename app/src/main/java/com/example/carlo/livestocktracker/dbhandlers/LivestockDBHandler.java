@@ -5,15 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
-import com.example.carlo.livestocktracker.Livestock;
+import com.example.carlo.livestocktracker.objects.Livestock;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import static android.R.attr.id;
-import static android.R.attr.tag;
 
 /**
  * Created by Carlo on 3/11/2017.

@@ -1,10 +1,12 @@
-package com.example.carlo.livestocktracker;
+package com.example.carlo.livestocktracker.objects;
+
+import java.io.Serializable;
 
 /**
  * Created by Carlo on 2/12/2017.
  */
 
-public class Livestock {
+public class Livestock implements Serializable {
 
     private int id;
     private String num;
