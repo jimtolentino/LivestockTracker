@@ -76,7 +76,7 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put(lsd_id_c, livestock.getId());
+       // values.put(lsd_id_c, livestock.getId());
         values.put(lsd_tagNumber_c, livestock.getNum());
         values.put(lsd_type_c, livestock.getType());
         values.put(lsd_breed_c, livestock.getBreed());
@@ -85,8 +85,10 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
 
         String[] whereClauseArgument = new String[1];
         whereClauseArgument[0] = livestock.getNum();
+//getnum == tagnumber? yep
 
         db.update(ls_details_tbl, values, lsd_tagNumber_c+"=?", whereClauseArgument);
+        db.close();
 
     }
 
@@ -103,6 +105,18 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
                     cursor.getString(1), 0, cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6));
 
             return livestock;
+    }
+
+    public boolean CheckIsDataAlreadyInDBorNot(int idValue) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String Query = "SELECT c_ls_id FROM " + ls_details_tbl + " WHERE " + lsd_id_c + " = " + idValue;
+        Cursor cursor = db.rawQuery(Query, null);
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        return true;
     }
 
     public ArrayList<Livestock> getAllLivestock(){

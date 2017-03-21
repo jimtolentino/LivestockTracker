@@ -13,8 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.carlo.livestocktracker.fragments.LivestockDetailsFragment;
-import com.example.carlo.livestocktracker.fragments.LivestockFragment;
+import com.example.carlo.livestocktracker.fragments.AddUpdLivestockGoatFragment;
 import com.example.carlo.livestocktracker.objects.Livestock;
 import com.example.carlo.livestocktracker.R;
 
@@ -89,7 +88,7 @@ public class LivestockAdapter extends  RecyclerView.Adapter<LivestockAdapter.Vie
 
                     android.app.FragmentManager fm = activity.getFragmentManager();
                     FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container, LivestockDetailsFragment.newInstance(livestockList.get(position)));
+                    fragmentTransaction.replace(R.id.fragment_container, AddUpdLivestockGoatFragment.newInstance(livestockList.get(position)));
                     fragmentTransaction.commit();
 
                 }

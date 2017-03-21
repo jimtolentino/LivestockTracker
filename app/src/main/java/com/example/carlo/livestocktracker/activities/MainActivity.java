@@ -14,6 +14,7 @@ import com.example.carlo.livestocktracker.R;
 import com.example.carlo.livestocktracker.fragments.AddUpdLivestockGoatFragment;
 import com.example.carlo.livestocktracker.fragments.LivestockFragment;
 import com.example.carlo.livestocktracker.fragments.ScannerFragment;
+import com.example.carlo.livestocktracker.objects.Livestock;
 
 //import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity{
                         } else if (id == R.id.nav_scan) {
                             fr = new ScannerFragment();
                         } else if (id == R.id.nav_notifications) {
-                            fr = new AddUpdLivestockGoatFragment();
+//                            fr = new AddUpdLivestockGoatFragment();
                         }
                         FragmentManager fm = getFragmentManager();
                         FragmentTransaction fragmentTransaction = fm.beginTransaction();
@@ -96,9 +97,10 @@ public class MainActivity extends AppCompatActivity{
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_addlivestock) {
+            Livestock livestock = new Livestock();
             FragmentManager fm = getFragmentManager();
             FragmentTransaction fragmentTransaction = fm.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, new AddUpdLivestockGoatFragment());
+            fragmentTransaction.replace(R.id.fragment_container, AddUpdLivestockGoatFragment.newInstance(livestock));
             fragmentTransaction.commit();
             return true;
         }
