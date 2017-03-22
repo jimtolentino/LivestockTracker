@@ -76,7 +76,7 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-       // values.put(lsd_id_c, livestock.getId());
+        values.put(lsd_id_c, livestock.getId());
         values.put(lsd_tagNumber_c, livestock.getNum());
         values.put(lsd_type_c, livestock.getType());
         values.put(lsd_breed_c, livestock.getBreed());
@@ -85,9 +85,8 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
 
         String[] whereClauseArgument = new String[1];
         whereClauseArgument[0] = livestock.getNum();
-//getnum == tagnumber? yep
 
-        db.update(ls_details_tbl, values, lsd_tagNumber_c+"=?", whereClauseArgument);
+        db.update(ls_details_tbl, values, lsd_tagNumber_c + "=?", whereClauseArgument);
         db.close();
 
     }
