@@ -84,9 +84,9 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
         values.put(lsd_weight_c, livestock.getWeight());
 
         String[] whereClauseArgument = new String[1];
-        whereClauseArgument[0] = livestock.getNum();
+        whereClauseArgument[0] = String.valueOf(livestock.getId());
 
-        db.update(ls_details_tbl, values, lsd_tagNumber_c + "=?", whereClauseArgument);
+        db.update(ls_details_tbl, values, lsd_id_c + "=?", whereClauseArgument);
         db.close();
 
     }
