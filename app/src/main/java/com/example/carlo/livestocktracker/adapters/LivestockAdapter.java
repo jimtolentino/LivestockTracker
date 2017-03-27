@@ -102,26 +102,5 @@ public class LivestockAdapter extends  RecyclerView.Adapter<LivestockAdapter.Vie
             HouseNum = (TextView)view.findViewById(R.id.detail_label_housenum);
 
         }
-
-//        @Override
-//        public void onClick(View view) {
-//            int position = getAdapterPosition();
-//            Livestock livestock = this.livestock.get(position);
-//
-//            Intent intent = new Intent(this.context, LivestockDetailsFragment.class);
-//            intent.putExtra("goatNum", livestock.getNum());
-//            intent.putExtra("img_id", livestock.getPhoto());
-//            intent.putExtra("type", livestock.getType());
-//            intent.putExtra("breed", livestock.getBreed());
-//            intent.putExtra("houseNum",livestock.getHouseNum());
-//            intent.putExtra("weight", livestock.getWeight());
-//            this.context.startActivity(intent);
-//
-//        }
-
-
     }
-
-
-
 }

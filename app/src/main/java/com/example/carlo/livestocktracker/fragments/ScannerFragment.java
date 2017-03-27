@@ -1,6 +1,8 @@
 package com.example.carlo.livestocktracker.fragments;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +12,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.carlo.livestocktracker.R;
+import com.example.carlo.livestocktracker.adapters.LivestockAdapter;
+import com.example.carlo.livestocktracker.objects.Livestock;
 import com.google.zxing.Result;
+
+import java.util.ArrayList;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -24,6 +30,8 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
     private LinearLayout qrCameraLayout;
     private TextView tv_goatNum;
     private String tvResult;
+    private ArrayList<Livestock> livestockList;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,13 +81,15 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
     @Override
     public void handleResult (Result result) {
         Toast.makeText(getActivity(), "Contents = " + result.getText() + ", Format = " + result.getBarcodeFormat().toString(), Toast.LENGTH_SHORT).show();
-//        System.out.println("Test" + result.getText());
+
+        Livestock livestock = new Livestock();
+//        int position = LivestockAdapter(getActivity(),livestock).getAdapterPosition();
+
 //        FragmentManager fm = getFragmentManager();
 //        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-//        fragmentTransaction.replace(R.id.fragment_container, new AddUpdLivestockGoatFragment());
+//        fragmentTransaction.replace(R.id.fragment_container, AddUpdLivestockGoatFragment.newInstance(livestockList.get(position)));
 //        fragmentTransaction.commit();
 
-        tvResult = result.getText();
 
     }
 

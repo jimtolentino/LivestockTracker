@@ -16,7 +16,7 @@
             android:id="@+id/lstock_photo"
             android:layout_width="wrap_content"
             android:layout_height="150sp"
-            android:src="@drawable/goat410"
+            android:background="@drawable/goat410"
             android:scaleType="centerCrop" />
         <RelativeLayout
             android:layout_width="match_parent"

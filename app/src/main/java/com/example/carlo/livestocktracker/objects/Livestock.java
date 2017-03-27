@@ -1,6 +1,8 @@
 package com.example.carlo.livestocktracker.objects;
 
+import java.io.File;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Carlo on 2/12/2017.
@@ -15,6 +17,9 @@ public class Livestock implements Serializable {
     private String houseNum;
     private String weight;
     private int photo;
+    private LivestockFile displayPicture;
+    private List<LivestockFile> photos;
+
 
     public Livestock(){
 
