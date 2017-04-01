@@ -82,9 +82,10 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
     public void handleResult (Result result) {
         Toast.makeText(getActivity(), "Contents = " + result.getText() + ", Format = " + result.getBarcodeFormat().toString(), Toast.LENGTH_SHORT).show();
 
-        Livestock livestock = new Livestock();
-//        int position = LivestockAdapter(getActivity(),livestock).getAdapterPosition();
 
+
+        Livestock livestock = new Livestock();
+//
 //        FragmentManager fm = getFragmentManager();
 //        FragmentTransaction fragmentTransaction = fm.beginTransaction();
 //        fragmentTransaction.replace(R.id.fragment_container, AddUpdLivestockGoatFragment.newInstance(livestockList.get(position)));

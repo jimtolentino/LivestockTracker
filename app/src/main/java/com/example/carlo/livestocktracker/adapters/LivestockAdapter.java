@@ -52,8 +52,8 @@ public class LivestockAdapter extends  RecyclerView.Adapter<LivestockAdapter.Vie
         livestock = livestockList.get(position);
 
 //        Livestock lstock = itemList.get(position);
-        holder.livestockNum.setText(livestockList.get(position).getNum());
-        holder.livestockPhoto.setImageResource(livestockList.get(position).getPhoto());
+        holder.livestockTag.setText(livestockList.get(position).getTag());
+//        holder.livestockPhoto.setImageResource(livestockList.get(position).getDisplayPicture());
 //        holder.Breed.setText(itemList.get(position).getBreed());
 //        holder.Type.setText(itemList.get(position).getType());
 //        holder.Weight.setText(itemList.get(position).getWeight());
@@ -68,12 +68,12 @@ public class LivestockAdapter extends  RecyclerView.Adapter<LivestockAdapter.Vie
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView livestockNum;
+        public TextView livestockTag;
         public ImageView livestockPhoto;
-        public TextView Breed;
-        public TextView Weight;
-        public TextView Type;
-        public TextView HouseNum;
+//        public TextView Breed;
+//        public TextView Weight;
+//        public TextView Type;
+//        public TextView HouseNum;
         Context context;
         Livestock livestock = new Livestock();
 
@@ -93,13 +93,13 @@ public class LivestockAdapter extends  RecyclerView.Adapter<LivestockAdapter.Vie
 
                 }
             });
-
-            livestockNum = (TextView)view.findViewById(R.id.lstock_num);
-            livestockPhoto = (ImageView)view.findViewById(R.id.lstock_photo);
-            Breed = (TextView)view.findViewById(R.id.detail_label_breed);
-            Weight = (TextView)view.findViewById(R.id.detail_label_weight);
-            Type = (TextView)view.findViewById(R.id.detail_label_type);
-            HouseNum = (TextView)view.findViewById(R.id.detail_label_housenum);
+//
+//            livestockTag = (TextView)view.findViewById(R.id.lstock_num);
+//            livestockPhoto = (ImageView)view.findViewById(R.id.lstock_photo);
+//            Breed = (TextView)view.findViewById(R.id.detail_label_breed);
+//            Weight = (TextView)view.findViewById(R.id.detail_label_weight);
+//            Type = (TextView)view.findViewById(R.id.detail_label_type);
+//            HouseNum = (TextView)view.findViewById(R.id.detail_label_housenum);
 
         }
     }
