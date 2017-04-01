@@ -20,11 +20,11 @@ public class Livestock implements Serializable {
     @DatabaseField(id = true, generatedId = false) public int id;
     @DatabaseField public String name;
     @DatabaseField public String tag;
-    @DatabaseField public Number weight;
+    @DatabaseField public String weight;
     @DatabaseField public Date dateOfBirth;
     @DatabaseField public String type;
     @DatabaseField public String breed;
-    @DatabaseField public Number offSpringCounter;
+    @DatabaseField public String offSpringCounter;
     @DatabaseField public String status;
     @DatabaseField public String houseNumber;
     @DatabaseField public String qrCode;
@@ -99,11 +99,11 @@ public class Livestock implements Serializable {
         this.tag = tag;
     }
 
-    public Number getWeight() {
+    public String getWeight() {
         return weight;
     }
 
-    public void setWeight(Number weight) {
+    public void setWeight(String weight) {
         this.weight = weight;
     }
 
@@ -131,11 +131,11 @@ public class Livestock implements Serializable {
         this.breed = breed;
     }
 
-    public Number getOffSpringCounter() {
+    public String getOffSpringCounter() {
         return offSpringCounter;
     }
 
-    public void setOffSpringCounter(Number offSpringCounter) {
+    public void setOffSpringCounter(String offSpringCounter) {
         this.offSpringCounter = offSpringCounter;
     }
 

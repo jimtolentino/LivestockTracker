@@ -51,7 +51,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:id="@+id/tvf_lgname"
                     android:hint="Name"
                     android:padding="8dp"/>
@@ -149,7 +149,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:inputType="numberDecimal"
+                    android:inputType="text"
                     android:id="@+id/et_lgstatus"
                     android:hint="Status"
                     android:padding="8dp"/>
@@ -161,7 +161,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:inputType="numberDecimal"
+                    android:inputType="text"
                     android:id="@+id/et_lgqrcode"
                     android:hint="QR Code"
                     android:padding="8dp"/>

@@ -38,7 +38,7 @@ public class AddUpdLivestockGoatFragment extends Fragment {
     private Button btn_save, btn_changePhoto;
     private EditText name,tag,weight,dateOfBirth,type,breed,offSpringCounter,status,houseNumber,qrCode,comments, medicalHistories,farm,investor;
     private ImageView tPhoto, sPhoto;
-    private String sGoatNum,sType,sBreed,sHouseNum,sWeight;
+    private String qrCode1;
     private static final String LIVESTOCK = "livestock_object";
     private int iId,iPhoto;
     private ImageView imageView;
@@ -61,7 +61,7 @@ public class AddUpdLivestockGoatFragment extends Fragment {
         //Inflate the layout for this fragment_packages
         final View fragmentview = inflater.inflate(R.layout.fragment_addupdategoat, container, false);
 
-//        dtoFactory = (DtoFactory) getActivity().getApplication();
+        dtoFactory = (DtoFactory) getActivity().getApplication();
 
         Bundle bundle = this.getArguments();
         Livestock livestock = (Livestock) bundle.getSerializable(LIVESTOCK);
@@ -100,20 +100,26 @@ public class AddUpdLivestockGoatFragment extends Fragment {
         btn_save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) throws android.database.SQLException {
 
+//                Toast.makeText(dtoFactory, "Test 1", Toast.LENGTH_LONG).show();
+
                 try {
-//                    Dao<Livestock, Integer> livestockDao = dtoFactory.getLivestockDao();
+//                    Toast.makeText(dtoFactory, "Test 54", Toast.LENGTH_LONG).show();
+                    Dao<Livestock, Integer> livestockDao = dtoFactory.getLivestockDao();
+//                    Toast.makeText(dtoFactory, "Test 0", Toast.LENGTH_LONG).show();
 
                     if (validate() == false) {
                         Livestock livestock = new Livestock();
 
+//                        Toast.makeText(dtoFactory, "Refresh App", Toast.LENGTH_LONG).show();
+
                         livestock.id = new Random().nextInt(10);
                         livestock.setName(name.getText().toString());
                         livestock.setTag(tag.getText().toString());
-                        livestock.setWeight(Integer.parseInt(weight.getText().toString()));
+                        livestock.setWeight(weight.getText().toString());
                         //                    livestock.setDateOfBirth(dateOfBirth.getText().toString());
                         livestock.setType(type.getText().toString());
                         livestock.setBreed(breed.getText().toString());
-                        livestock.setOffSpringCounter(Integer.parseInt(offSpringCounter.getText().toString()));
+                        livestock.setOffSpringCounter(offSpringCounter.getText().toString());
                         livestock.setStatus(status.getText().toString());
                         livestock.setHouseNumber(houseNumber.getText().toString());
                         //                    livestock.setComments(comments.getText().toString());
@@ -121,14 +127,17 @@ public class AddUpdLivestockGoatFragment extends Fragment {
                         //                    livestock.setDisplayPicture(displayPicture.getText().toString());
                         //                    livestock.setFarm(farm.getText().toString());
                         //                    livestock.setInvestor(investor.getText().toString());
+                        livestock.setQrCode(qrCode.getText().toString());
 
                         LivestockDBHandler db = new LivestockDBHandler(getActivity());
 
+                        qrCode1 = (String) qrCode.getText().toString();
+
                         fr = new LivestockFragment();
 
-                                            if (db.CheckIsDataAlreadyInDBorNot(tag.toString()) == false) {
+                                            if (db.CheckIsDataAlreadyInDBorNot(qrCode1) == false) {
 
-//                                                livestockDao.create(livestock);
+                                                livestockDao.create(livestock);
 
                                                 db.addLivestock(livestock);
 
@@ -151,7 +160,7 @@ public class AddUpdLivestockGoatFragment extends Fragment {
                                             }
                     }
                 }catch (Exception e){
-                    System.out.println();
+                    Toast.makeText(dtoFactory, e.getMessage() , Toast.LENGTH_LONG).show();
                 }
             }
         });

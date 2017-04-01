@@ -90,7 +90,7 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
 
         values.put(KEY_NAME, livestock.getName());
         values.put(KEY_TAG, livestock.getTag());
-//        values.put(KEY_WEIGHT, livestock.getWeight());
+        values.put(KEY_WEIGHT, livestock.getWeight());
 //        values.put(KEY_DATE_OF_BIRTH, livestock.getDateOfBirth());
         values.put(KEY_TYPE, livestock.getType());
         values.put(KEY_BREED, livestock.getBreed());
@@ -160,11 +160,11 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
 
             livestock.setName(cursor.getString(0));
             livestock.setTag(cursor.getString(1));
-            livestock.setWeight(cursor.getInt(2));
+            livestock.setWeight(cursor.getString(2));
 //            livestock.setDateOfBirth(cursor.getString(3));
             livestock.setType(cursor.getString(4));
             livestock.setBreed(cursor.getString(5));
-            livestock.setOffSpringCounter(cursor.getInt(6));
+            livestock.setOffSpringCounter(cursor.getString(6));
             livestock.setStatus(cursor.getString(7));
             livestock.setHouseNumber(cursor.getString(8));
 //            livestock.setComments(cursor.getString(9));
@@ -176,9 +176,9 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
             return livestock;
     }
 
-    public boolean CheckIsDataAlreadyInDBorNot(String tag) {
+    public boolean CheckIsDataAlreadyInDBorNot(String qrCode1) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String Query = "SELECT ls_tag FROM " + LIVESTOCK_DETAILS + " WHERE " + KEY_TAG + " = " + tag;
+        String Query = "SELECT ls_tag FROM " + LIVESTOCK_DETAILS + " WHERE " + KEY_QR_CODE + " = " + qrCode1;
         Cursor cursor = db.rawQuery(Query, null);
         if(cursor.getCount() <= 0){
             cursor.close();
@@ -200,11 +200,11 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
 
                 livestock.setName(cursor.getString(0));
                 livestock.setTag(cursor.getString(1));
-                livestock.setWeight(cursor.getInt(2));
+                livestock.setWeight(cursor.getString(2));
 //            livestock.setDateOfBirth(cursor.getString(3));
                 livestock.setType(cursor.getString(4));
                 livestock.setBreed(cursor.getString(5));
-                livestock.setOffSpringCounter(cursor.getInt(6));
+                livestock.setOffSpringCounter(cursor.getString(6));
                 livestock.setStatus(cursor.getString(7));
                 livestock.setHouseNumber(cursor.getString(8));
 //            livestock.setComments(cursor.getString(9));

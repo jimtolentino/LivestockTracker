@@ -1,8 +1,10 @@
 package com.example.carlo.livestocktracker;
 
+//import android.app.Application;
 import android.app.Application;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.widget.Toast;
 
 import com.example.carlo.livestocktracker.dbhandlers.LivestockDBHelper;
 import com.example.carlo.livestocktracker.objects.Livestock;
