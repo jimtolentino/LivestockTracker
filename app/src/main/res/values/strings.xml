@@ -69,6 +69,7 @@
     <string name="back_btn">Back</string>
 
     <string name="action_addlivestock">Add Livestock</string>
+    <string name="capture_photo">Capture</string>
 
 
 </resources>
