@@ -2,180 +2,184 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/fl_formAddGoat"
-    android:scrollbars="vertical">
+    android:id="@+id/fl_formAddGoat">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:scrollbars="vertical">
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/tvf_lgname">
-
-            <ImageView
-                android:id="@+id/iv_lstockpic"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:src="@drawable/goat410"
-                android:layout_gravity="top"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <Button
-                android:id="@+id/button_addphoto"
-                android:text="Change Photo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                style="@style/Widget.AppCompat.Button"
-                android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
-                android:layout_alignParentBottom="false"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_centerHorizontal="false" />
-
-
-        </RelativeLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:inputType="number"
-                android:id="@+id/tvf_lgname"
-                android:hint="Name"
-                android:padding="8dp"/>
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:inputType="text"
-                android:id="@+id/tvf_lgtag"
-                android:hint="Eartag Number"
-                android:padding="8dp"/>
-        </android.support.design.widget.TextInputLayout>
-
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:inputType="text"
-                android:id="@+id/sp_lgtype"
-                android:hint="Type"
-                android:padding="8dp"/>
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:inputType="text"
-                android:id="@+id/sp_lgbreed"
-                android:hint="Breed"
-                android:padding="8dp"/>
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:inputType="number"
-                android:id="@+id/et_lghouseNum"
-                android:hint="House Number"
-                android:padding="8dp"/>
-        </android.support.design.widget.TextInputLayout>
-
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:inputType="numberDecimal"
-                android:id="@+id/et_lgweight"
-                android:hint="Weight"
-                android:padding="8dp"/>
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:inputType="numberDecimal"
-                android:id="@+id/et_lgdateofbirth"
-                android:hint="Date of birth"
-                android:padding="8dp"/>
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:inputType="numberDecimal"
-                android:id="@+id/et_lgoffspringctr"
-                android:hint="Offspring Count"
-                android:padding="8dp"/>
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:inputType="numberDecimal"
-                android:id="@+id/et_lgstatus"
-                android:hint="Status"
-                android:padding="8dp"/>
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:inputType="numberDecimal"
-                android:id="@+id/et_lgqrcode"
-                android:hint="QR Code"
-                android:padding="8dp"/>
-        </android.support.design.widget.TextInputLayout>
-
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-            <Button
-                android:id="@+id/btn_save"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:scrollbars="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/tvf_lgname">
+
+                <ImageView
+                    android:id="@+id/iv_lstockpic"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:src="@drawable/goat410"
+                    android:layout_gravity="top"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <Button
+                    android:id="@+id/button_addphoto"
+                    android:text="Change Photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    style="@style/Widget.AppCompat.Button"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
+                    android:layout_alignParentBottom="false"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerHorizontal="false" />
+
+
+            </RelativeLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="number"
+                    android:id="@+id/tvf_lgname"
+                    android:hint="Name"
+                    android:padding="8dp"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="text"
+                    android:id="@+id/tvf_lgtag"
+                    android:hint="Eartag Number"
+                    android:padding="8dp"/>
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="text"
+                    android:id="@+id/sp_lgtype"
+                    android:hint="Type"
+                    android:padding="8dp"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="text"
+                    android:id="@+id/sp_lgbreed"
+                    android:hint="Breed"
+                    android:padding="8dp"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="number"
+                    android:id="@+id/et_lghouseNum"
+                    android:hint="House Number"
+                    android:padding="8dp"/>
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="numberDecimal"
+                    android:id="@+id/et_lgweight"
+                    android:hint="Weight"
+                    android:padding="8dp"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="numberDecimal"
+                    android:id="@+id/et_lgdateofbirth"
+                    android:hint="Date of birth"
+                    android:padding="8dp"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="numberDecimal"
+                    android:id="@+id/et_lgoffspringctr"
+                    android:hint="Offspring Count"
+                    android:padding="8dp"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="numberDecimal"
+                    android:id="@+id/et_lgstatus"
+                    android:hint="Status"
+                    android:padding="8dp"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="numberDecimal"
+                    android:id="@+id/et_lgqrcode"
+                    android:hint="QR Code"
+                    android:padding="8dp"/>
+            </android.support.design.widget.TextInputLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/save_btn"/>
+                android:orientation="horizontal"
+                android:gravity="center">
+                <Button
+                    android:id="@+id/btn_save"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/save_btn"/>
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
