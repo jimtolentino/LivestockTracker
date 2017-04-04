@@ -19,9 +19,9 @@ import java.util.ArrayList;
 public class LivestockDBHandler extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
     // Database Name
-    private static final String DATABASE_NAME = "LivestockTrackerDBS";
+    private static final String DATABASE_NAME = "LivestockTrackerDB1";
     // table name
     private static final String LIVESTOCK_DETAILS = "livestock_details_tbl";
     //Table Columns names
@@ -184,7 +184,7 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
         Cursor cursor = db.query(LIVESTOCK_DETAILS, new String[] {KEY_NAME,
                         KEY_TAG,KEY_WEIGHT, KEY_DATE_OF_BIRTH, KEY_TYPE, KEY_BREED,
                         KEY_OFFSPRING_CTR, KEY_STATUS, KEY_HOUSE_NUM, KEY_COMMENTS,
-                        KEY_MED_HIST, KEY_DISPLAY_PIC, KEY_FARM, KEY_INVESTOR},
+                        KEY_MED_HIST, KEY_DISPLAY_PIC, KEY_FARM, KEY_INVESTOR, KEY_QR_CODE},
                                  KEY_TAG + "=?", new String[] {String.valueOf(tag)}, null, null,null,null);
         if (cursor != null)
             if (cursor != null)
@@ -206,14 +206,22 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
 //            livestock.setDisplayPicture(cursor.getString(11));
 //            livestock.setFarm(cursor.getString(12));
 //            livestock.setInvestor(cursor.getString(13));
+            livestock.setQrCode(cursor.getString(9));
 
             return livestock;
     }
 
     public boolean CheckIsDataAlreadyInDBorNot(String qrCode1) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String Query = "SELECT * FROM " + LIVESTOCK_DETAILS + " WHERE " + KEY_QR_CODE + "=" + qrCode1;
-        Cursor cursor = db.rawQuery(Query, null);
+
+        Livestock livestock = new Livestock();
+
+        String[] whereClauseArgument2 = new String[1];
+        whereClauseArgument2[0] = String.valueOf(livestock.getQrCode());
+
+//        String Query = "SELECT ls_name FROM " + LIVESTOCK_DETAILS + " WHERE ls_qr_code=" + qrCode1;
+
+        Cursor cursor = db.rawQuery("SELECT ls_name FROM " + LIVESTOCK_DETAILS + " WHERE " + KEY_QR_CODE + "=?", whereClauseArgument2);
         if(cursor.getCount() <= 0){
             cursor.close();
             return false;
@@ -225,20 +233,20 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
     public ArrayList<Livestock> getAllLivestock(){
         ArrayList<Livestock> livestockList = new ArrayList<Livestock>();
         try{
-        String selectQuery = "SELECT "+
-                             KEY_NAME + "," +
-                             KEY_TAG + "," +
-                             KEY_WEIGHT + "," +
-                             KEY_TYPE + "," +
-                             KEY_BREED + "," +
-                             KEY_OFFSPRING_CTR + "," +
-                             KEY_STATUS + "," +
-                             KEY_HOUSE_NUM +
-                             " FROM " + LIVESTOCK_DETAILS;
+//        String selectQuery = "SELECT "+
+//                             KEY_NAME + "," +
+//                             KEY_TAG + "," +
+//                             KEY_WEIGHT + "," +
+//                             KEY_TYPE + "," +
+//                             KEY_BREED + "," +
+//                             KEY_OFFSPRING_CTR + "," +
+//                             KEY_STATUS + "," +
+//                             KEY_HOUSE_NUM +
+//                             " FROM " + LIVESTOCK_DETAILS;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(LIVESTOCK_DETAILS, new String[] {KEY_NAME,
                         KEY_TAG,KEY_WEIGHT, KEY_TYPE, KEY_BREED,
-                        KEY_OFFSPRING_CTR, KEY_STATUS, KEY_HOUSE_NUM},
+                        KEY_OFFSPRING_CTR, KEY_STATUS, KEY_HOUSE_NUM, KEY_QR_CODE},
                         null, null, null,null,null, null);
 
         if (cursor.moveToFirst()){
@@ -259,6 +267,7 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
 //            livestock.setDisplayPicture(cursor.getString(11));
 //            livestock.setFarm(cursor.getString(12));
 //            livestock.setInvestor(cursor.getString(13));
+                livestock.setQrCode(cursor.getString(8));
                 livestockList.add(livestock);
             }while (cursor.moveToNext());
         }
@@ -271,4 +280,5 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
     }
         return livestockList;
     }
+
 }

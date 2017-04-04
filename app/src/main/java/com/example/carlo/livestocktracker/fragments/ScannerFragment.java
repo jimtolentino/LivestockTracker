@@ -86,10 +86,10 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
 
         Livestock livestock = new Livestock();
 //
-//        FragmentManager fm = getFragmentManager();
-//        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-//        fragmentTransaction.replace(R.id.fragment_container, AddUpdLivestockGoatFragment.newInstance(livestockList.get(position)));
-//        fragmentTransaction.commit();
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, AddUpdLivestockGoatFragment.newInstance(livestock));
+        fragmentTransaction.commit();
 
 
     }

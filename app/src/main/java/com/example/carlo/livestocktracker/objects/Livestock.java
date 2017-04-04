@@ -24,13 +24,13 @@ public class Livestock implements Serializable {
 //    private Date dateOfBirth;
     private String type;
     private String breed;
-    private int offSpringCounter;
+    private Integer offSpringCounter;
     private String status;
     private String houseNumber;
     private String qrCode;
 //    private List<LivestockComments> comments;
 //    private List<LivestockMedHist> medicalHistories;
-//    private LivestockFile displayPicture;
+    private LivestockFile displayPicture;
 //    private List<LivestockFile> photos;
 //    private LivestockFarm farm;
 //    private LivestockInvestor investor;
@@ -139,11 +139,11 @@ public class Livestock implements Serializable {
         this.breed = breed;
     }
 
-    public int getOffSpringCounter() {
+    public Integer getOffSpringCounter() {
         return offSpringCounter;
     }
 
-    public void setOffSpringCounter(int offSpringCounter) {
+    public void setOffSpringCounter(Integer offSpringCounter) {
         this.offSpringCounter = offSpringCounter;
     }
 
@@ -187,13 +187,13 @@ public class Livestock implements Serializable {
 //        this.medicalHistories = medicalHistories;
 //    }
 //
-//    public LivestockFile getDisplayPicture() {
-//        return displayPicture;
-//    }
-//
-//    public void setDisplayPicture(LivestockFile displayPicture) {
-//        this.displayPicture = displayPicture;
-//    }
+    public LivestockFile getDisplayPicture() {
+        return displayPicture;
+    }
+
+    public void setDisplayPicture(LivestockFile displayPicture) {
+        this.displayPicture = displayPicture;
+    }
 //
 //    public List<LivestockFile> getPhotos() {
 //        return photos;

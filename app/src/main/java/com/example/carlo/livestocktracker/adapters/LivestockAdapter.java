@@ -49,11 +49,12 @@ public class LivestockAdapter extends  RecyclerView.Adapter<LivestockAdapter.Vie
     @Override
     public void onBindViewHolder(LivestockAdapter.ViewHolder holder, int position) {
 
-        livestock = livestockList.get(position);
+//        livestock = livestockList.get(position);
 
 //        Livestock lstock = itemList.get(position);
         holder.livestockTag.setText(livestockList.get(position).getTag());
-//        holder.livestockPhoto.setImageResource(livestockList.get(position).getDisplayPicture());
+        holder.livestockQrCode.setText(livestockList.get(position).getQrCode());
+//        holder.livestockPhoto.setImageResource(R.drawable.goat410);
 //        holder.Breed.setText(itemList.get(position).getBreed());
 //        holder.Type.setText(itemList.get(position).getType());
 //        holder.Weight.setText(itemList.get(position).getWeight());
@@ -69,6 +70,7 @@ public class LivestockAdapter extends  RecyclerView.Adapter<LivestockAdapter.Vie
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView livestockTag;
+        public TextView livestockQrCode;
         public ImageView livestockPhoto;
 //        public TextView Breed;
 //        public TextView Weight;
@@ -80,11 +82,17 @@ public class LivestockAdapter extends  RecyclerView.Adapter<LivestockAdapter.Vie
         public ViewHolder (View view) {
             super(view);
 
+
             view.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
 
                     int position = getAdapterPosition();
+
+//                    Livestock livestock = new Livestock();
+
+                    String qrCode = livestockQrCode.getText().toString();
+
 
                     android.app.FragmentManager fm = activity.getFragmentManager();
                     FragmentTransaction fragmentTransaction = fm.beginTransaction();
@@ -94,12 +102,15 @@ public class LivestockAdapter extends  RecyclerView.Adapter<LivestockAdapter.Vie
                 }
             });
 //
-//            livestockTag = (TextView)view.findViewById(R.id.lstock_num);
-//            livestockPhoto = (ImageView)view.findViewById(R.id.lstock_photo);
+            livestockTag = (TextView)view.findViewById(R.id.lstock_num);
+            livestockQrCode = (TextView)view.findViewById(R.id.lstock_qrcode);
+            livestockPhoto = (ImageView)view.findViewById(R.id.lstock_photo);
+
 //            Breed = (TextView)view.findViewById(R.id.detail_label_breed);
 //            Weight = (TextView)view.findViewById(R.id.detail_label_weight);
 //            Type = (TextView)view.findViewById(R.id.detail_label_type);
 //            HouseNum = (TextView)view.findViewById(R.id.detail_label_housenum);
+
 
         }
     }

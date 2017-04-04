@@ -34,6 +34,16 @@
                 android:paddingBottom="3dp"
                 android:paddingTop="3dp"/>
 
+            <TextView
+                android:id="@+id/lstock_qrcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:gravity="top"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp"/>
+
             <!--android:layout_alignParentBottom="true"-->
             <!--android:background="@color/colorAccent"-->
             <!--android:layout_below="@+id/lstock_photo"-->
