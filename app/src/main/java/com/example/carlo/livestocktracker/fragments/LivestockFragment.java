@@ -48,7 +48,6 @@ public class LivestockFragment extends Fragment {
     private ArrayList<Livestock> initLivestocks(){
 
         LivestockDBHandler db = new LivestockDBHandler(getActivity());
-//        db.addLivestock(new Livestock(1,"JT-137", R.drawable.goat410,"Goat","Boer","House # 8","40 kg"));
 
         ArrayList<Livestock> livestock = db.getAllLivestock();
 

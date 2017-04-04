@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -16,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.carlo.livestocktracker.DtoFactory;
 import com.example.carlo.livestocktracker.objects.Livestock;
 import com.example.carlo.livestocktracker.dbhandlers.LivestockDBHandler;
 import com.example.carlo.livestocktracker.R;
@@ -44,7 +44,6 @@ public class AddUpdLivestockGoatFragment extends Fragment {
     private ImageView imageView;
     //private EditText et_id, et_goatNum, et_breed, et_type, et_weight, et_houseNum;
     private boolean vFlag;
-    private DtoFactory dtoFactory;
     private Fragment fr = null;
 
     public static AddUpdLivestockGoatFragment newInstance(Livestock livestock){
@@ -61,8 +60,6 @@ public class AddUpdLivestockGoatFragment extends Fragment {
         //Inflate the layout for this fragment_packages
         final View fragmentview = inflater.inflate(R.layout.fragment_addupdategoat, container, false);
 
-        dtoFactory = (DtoFactory) getActivity().getApplication();
-
         Bundle bundle = this.getArguments();
         Livestock livestock = (Livestock) bundle.getSerializable(LIVESTOCK);
 
@@ -74,18 +71,22 @@ public class AddUpdLivestockGoatFragment extends Fragment {
         breed = (EditText)fragmentview.findViewById(R.id.sp_lgbreed);
         houseNumber = (EditText)fragmentview.findViewById(R.id.et_lghouseNum);
         weight = (EditText)fragmentview.findViewById(R.id.et_lgweight);
-        dateOfBirth = (EditText)fragmentview.findViewById(R.id.et_lgdateofbirth);
+//        dateOfBirth = (EditText)fragmentview.findViewById(R.id.et_lgdateofbirth);
         offSpringCounter = (EditText)fragmentview.findViewById(R.id.et_lgoffspringctr);
         status = (EditText)fragmentview.findViewById(R.id.et_lgstatus);
         qrCode = (EditText)fragmentview.findViewById(R.id.et_lgqrcode);
 //
-//        tId.setText(""+livestock.getId());
-//        tGoatNum.setText(livestock.getNum());
-//      //  sPhoto.setImageResource(livestock.getPhoto());
-//        tType.setText(livestock.getType());
-//        tBreed.setText(livestock.getBreed());
-//        tHouseNum.setText(livestock.getHouseNum());
-//        tWeight.setText(livestock.getWeight());
+
+        name.setText(livestock.getName());
+      //  sPhoto.setImageResource(livestock.getPhoto());
+        tag.setText(livestock.getTag());
+        type.setText(livestock.getType());
+        breed.setText(livestock.getBreed());
+        houseNumber.setText(livestock.getHouseNumber());
+        weight.setText(""+livestock.getWeight());
+        offSpringCounter.setText(""+livestock.getOffSpringCounter());
+        status.setText(livestock.getStatus());
+        qrCode.setText(livestock.getQrCode());
 
         return fragmentview;
 
@@ -100,79 +101,72 @@ public class AddUpdLivestockGoatFragment extends Fragment {
         btn_save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) throws android.database.SQLException {
 
-//                Toast.makeText(dtoFactory, "Test 1", Toast.LENGTH_LONG).show();
-
-                try {
-//                    Toast.makeText(dtoFactory, "Test 54", Toast.LENGTH_LONG).show();
-                    Dao<Livestock, Integer> livestockDao = dtoFactory.getLivestockDao();
 //                    Toast.makeText(dtoFactory, "Test 0", Toast.LENGTH_LONG).show();
 
-                    if (validate() == false) {
-                        Livestock livestock = new Livestock();
+                if (validate() == false) {
+                    Livestock livestock = new Livestock();
 
-//                        Toast.makeText(dtoFactory, "Refresh App", Toast.LENGTH_LONG).show();
+    //                        Toast.makeText(dtoFactory, "Refresh App", Toast.LENGTH_LONG).show();
 
-                        livestock.id = new Random().nextInt(10);
-                        livestock.setName(name.getText().toString());
-                        livestock.setTag(tag.getText().toString());
-                        livestock.setWeight(weight.getText().toString());
-                        //                    livestock.setDateOfBirth(dateOfBirth.getText().toString());
-                        livestock.setType(type.getText().toString());
-                        livestock.setBreed(breed.getText().toString());
-                        livestock.setOffSpringCounter(offSpringCounter.getText().toString());
-                        livestock.setStatus(status.getText().toString());
-                        livestock.setHouseNumber(houseNumber.getText().toString());
-                        //                    livestock.setComments(comments.getText().toString());
-                        //                    livestock.setMedicalHistories(medicalHistories.getText().toString());
-                        //                    livestock.setDisplayPicture(displayPicture.getText().toString());
-                        //                    livestock.setFarm(farm.getText().toString());
-                        //                    livestock.setInvestor(investor.getText().toString());
-                        livestock.setQrCode(qrCode.getText().toString());
+                    livestock.setId(new Random().nextInt(10));
+                    livestock.setName(name.getText().toString());
+                    livestock.setTag(tag.getText().toString());
+                    livestock.setWeight(Double.parseDouble(weight.getText().toString()));
+                    //                    livestock.setDateOfBirth(dateOfBirth.getText().toString());
+                    livestock.setType(type.getText().toString());
+                    livestock.setBreed(breed.getText().toString());
+                    livestock.setOffSpringCounter(Integer.parseInt(offSpringCounter.getText().toString()));
+                    livestock.setStatus(status.getText().toString());
+                    livestock.setHouseNumber(houseNumber.getText().toString());
+                    //                    livestock.setComments(comments.getText().toString());
+                    //                    livestock.setMedicalHistories(medicalHistories.getText().toString());
+                    //                    livestock.setDisplayPicture(displayPicture.getText().toString());
+                    //                    livestock.setFarm(farm.getText().toString());
+                    //                    livestock.setInvestor(investor.getText().toString());
+                    livestock.setQrCode(qrCode.getText().toString());
 
-                        LivestockDBHandler db = new LivestockDBHandler(getActivity());
+                    LivestockDBHandler db = new LivestockDBHandler(getActivity());
 
-                        qrCode1 = (String) qrCode.getText().toString();
+                    qrCode1 = qrCode.getText().toString();
 
-                        fr = new LivestockFragment();
+                    fr = new LivestockFragment();
 
-                                            if (db.CheckIsDataAlreadyInDBorNot(qrCode1) == false) {
+                    if (db.CheckIsDataAlreadyInDBorNot(qrCode1) == false) {
 
-                                                livestockDao.create(livestock);
+    //                            livestockDao.create(livestock);
 
-                                                db.addLivestock(livestock);
+                        db.addLivestock(livestock);
 
-                                                Toast.makeText(getActivity(), livestock.getTag() + " is added!",
-                                                        Toast.LENGTH_LONG).show();
-                                                FragmentManager fm = getFragmentManager();
-                                                FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                                                fragmentTransaction.replace(R.id.fragment_container, fr);
-                                                fragmentTransaction.commit();
+                        Toast.makeText(getActivity(), livestock.getTag() + " is added!",
+                                Toast.LENGTH_LONG).show();
+                        FragmentManager fm = getFragmentManager();
+                        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                        fragmentTransaction.replace(R.id.fragment_container, fr);
+                        fragmentTransaction.commit();
 
-                                            } else {
-                                                db.updateLivestock(livestock);
-                                                Toast.makeText(getActivity(), livestock.getTag() + " is updated!",
-                                                        Toast.LENGTH_LONG).show();
-                                                FragmentManager fm = getFragmentManager();
-                                                FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                                                fragmentTransaction.replace(R.id.fragment_container, fr);
-                                                fragmentTransaction.commit();
+                    } else {
+                        db.updateLivestock(livestock);
+                        Toast.makeText(getActivity(), livestock.getTag() + " is updated!",
+                                Toast.LENGTH_LONG).show();
+                        FragmentManager fm = getFragmentManager();
+                        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                        fragmentTransaction.replace(R.id.fragment_container, fr);
+                        fragmentTransaction.commit();
 
-                                            }
                     }
-                }catch (Exception e){
-                    Toast.makeText(dtoFactory, e.getMessage() , Toast.LENGTH_LONG).show();
                 }
+
             }
         });
 
         btn_changePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fr = new CapturePhotoFragment();
-                FragmentManager fm = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, fr);
-                fragmentTransaction.commit();
+//                fr = new CapturePhotoFragment();
+//                FragmentManager fm = getFragmentManager();
+//                FragmentTransaction fragmentTransaction = fm.beginTransaction();
+//                fragmentTransaction.replace(R.id.fragment_container, fr);
+//                fragmentTransaction.commit();
             }
         });
 
@@ -180,30 +174,39 @@ public class AddUpdLivestockGoatFragment extends Fragment {
 
     private boolean validate(){
         boolean errors = false;
-//        if(tId.getText().toString().matches("")){
-//            tId.setError("Please enter ID.");
-//            errors = true;
-//        }
-//        else if(tGoatNum.getText().toString().matches("")){
-//            tGoatNum.setError("Please enter goat number.");
-//            errors = true;
-//        }
-//        else if(tType.getText().toString().matches("")){
-//            tType.setError("Please enter type of livestock.");
-//            errors = true;
-//        }
-//        else if(tBreed.getText().toString().matches("")){
-//            tBreed.setError("Please enter breed.");
-//            errors = true;
-//        }
-//        else if(tHouseNum.getText().toString().matches("")){
-//            tHouseNum.setError("Please enter house number.");
-//            errors = true;
-//        }
-//        else if(tWeight.getText().toString().matches("")){
-//            tWeight.setError("Please enter weight of the livestock.");
-//            errors = true;
-//        }
+        if(name.getText().toString().matches("")){
+            name.setError("Please enter Name.");
+            errors = true;
+        }
+        else if(tag.getText().toString().matches("")){
+            tag.setError("Please enter Ear Tag Number.");
+            errors = true;
+        }
+        else if(weight.getText().toString().matches("")){
+            weight.setError("Please enter Weight.");
+            errors = true;
+        }
+        else if(type.getText().toString().matches("")){
+            type.setError("Please enter Type.");
+            errors = true;
+        }
+        else if(breed.getText().toString().matches("")){
+            breed.setError("Please enter Breed.");
+            errors = true;
+        }
+        else if(offSpringCounter.getText().toString().matches("")){
+            offSpringCounter.setError("Please enter Offspring Counter.");
+            errors = true;
+        }
+        else if(status.getText().toString().matches("")){
+            status.setError("Please enter Status.");
+            errors = true;
+        }
+        else if(houseNumber.getText().toString().matches("")){
+            houseNumber.setError("Please enter House Number.");
+            errors = true;
+        }
+
         return errors;
 
     }

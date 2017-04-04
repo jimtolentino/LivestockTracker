@@ -13,29 +13,29 @@ import com.j256.ormlite.table.DatabaseTable;
  * Created by Carlo on 2/12/2017.
  */
 
-@DatabaseTable(tableName = "livestock_details_tbl")
-
 public class Livestock implements Serializable {
 
-    @DatabaseField(id = true, generatedId = false) public int id;
-    @DatabaseField public String name;
-    @DatabaseField public String tag;
-    @DatabaseField public String weight;
-    @DatabaseField public Date dateOfBirth;
-    @DatabaseField public String type;
-    @DatabaseField public String breed;
-    @DatabaseField public String offSpringCounter;
-    @DatabaseField public String status;
-    @DatabaseField public String houseNumber;
-    @DatabaseField public String qrCode;
+
+
+    private int id;
+    private String name;
+    private String tag;
+    private Double weight;
+//    private Date dateOfBirth;
+    private String type;
+    private String breed;
+    private int offSpringCounter;
+    private String status;
+    private String houseNumber;
+    private String qrCode;
 //    private List<LivestockComments> comments;
 //    private List<LivestockMedHist> medicalHistories;
-    private LivestockFile displayPicture;
+//    private LivestockFile displayPicture;
 //    private List<LivestockFile> photos;
 //    private LivestockFarm farm;
 //    private LivestockInvestor investor;
 //    private LivestockInvestment investment;
-    @DatabaseField public Date created_at;
+//    public Date created_at;
 //    private LivestockCreator creator;
 
     public Livestock(){
@@ -83,6 +83,14 @@ public class Livestock implements Serializable {
 //        this.creator = creator;
 //    }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -99,21 +107,21 @@ public class Livestock implements Serializable {
         this.tag = tag;
     }
 
-    public String getWeight() {
+    public Double getWeight() {
         return weight;
     }
 
-    public void setWeight(String weight) {
+    public void setWeight(Double weight) {
         this.weight = weight;
     }
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
+//    public Date getDateOfBirth() {
+//        return dateOfBirth;
+//    }
+//
+//    public void setDateOfBirth(Date dateOfBirth) {
+//        this.dateOfBirth = dateOfBirth;
+//    }
 
     public String getType() {
         return type;
@@ -131,11 +139,11 @@ public class Livestock implements Serializable {
         this.breed = breed;
     }
 
-    public String getOffSpringCounter() {
+    public int getOffSpringCounter() {
         return offSpringCounter;
     }
 
-    public void setOffSpringCounter(String offSpringCounter) {
+    public void setOffSpringCounter(int offSpringCounter) {
         this.offSpringCounter = offSpringCounter;
     }
 
@@ -179,13 +187,13 @@ public class Livestock implements Serializable {
 //        this.medicalHistories = medicalHistories;
 //    }
 //
-    public LivestockFile getDisplayPicture() {
-        return displayPicture;
-    }
-
-    public void setDisplayPicture(LivestockFile displayPicture) {
-        this.displayPicture = displayPicture;
-    }
+//    public LivestockFile getDisplayPicture() {
+//        return displayPicture;
+//    }
+//
+//    public void setDisplayPicture(LivestockFile displayPicture) {
+//        this.displayPicture = displayPicture;
+//    }
 //
 //    public List<LivestockFile> getPhotos() {
 //        return photos;
@@ -219,13 +227,13 @@ public class Livestock implements Serializable {
 //        this.investment = investment;
 //    }
 
-    public Date getCreated_at() {
-        return created_at;
-    }
-
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
+//    public Date getCreated_at() {
+//        return created_at;
+//    }
+//
+//    public void setCreated_at(Date created_at) {
+//        this.created_at = created_at;
+//    }
 
 //    public LivestockCreator getCreator() {
 //        return creator;

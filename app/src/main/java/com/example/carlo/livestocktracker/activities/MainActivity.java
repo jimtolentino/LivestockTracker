@@ -9,36 +9,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import com.example.carlo.livestocktracker.DtoFactory;
 import com.example.carlo.livestocktracker.R;
 import com.example.carlo.livestocktracker.fragments.AddUpdLivestockGoatFragment;
 import com.example.carlo.livestocktracker.fragments.LivestockFragment;
 import com.example.carlo.livestocktracker.fragments.ScannerFragment;
 import com.example.carlo.livestocktracker.objects.Livestock;
 
-//import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class MainActivity extends AppCompatActivity {
-
-//    private TextView textLivestock;
-//    private TextView textScan;
-//    private TextView textNotification;
-//    private GridLayoutManager lLayout;
-//    private ZXingScannerView qrScan;
-//    private ZXingScannerView mScannerView;
-      private DtoFactory dtoFactory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        try {
-//            dtoFactory = (DtoFactory) getApplication();
-//        }catch (Exception e) {
-//            Toast.makeText( getApplication(), e.getMessage(), Toast.LENGTH_LONG).show();
-//        }
 
         FragmentManager fm = getFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();

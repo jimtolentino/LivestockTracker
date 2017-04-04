@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.example.carlo.livestocktracker.objects.Livestock;
 
@@ -17,9 +19,9 @@ import java.util.ArrayList;
 public class LivestockDBHandler extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     // Database Name
-    private static final String DATABASE_NAME = "LivestockTracker";
+    private static final String DATABASE_NAME = "LivestockTrackerDBS";
     // table name
     private static final String LIVESTOCK_DETAILS = "livestock_details_tbl";
     //Table Columns names
@@ -45,35 +47,43 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
     private static final String KEY_CREATOR = "ls_creator";
 
 
+    private static final String TAG = "DBHandler";
+
+
     public LivestockDBHandler(Context context){
         super(context, DATABASE_NAME, null,DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String create_livestock_details_tbl = "CREATE TABLE " + LIVESTOCK_DETAILS +
-                                       "(" + KEY_ID + " INTEGER PRIMARY KEY,"
-                                           + KEY_NAME + " TEXT,"
-                                           + KEY_TAG + " TEXT,"
-                                           + KEY_WEIGHT + " INTEGER,"
-                                           + KEY_DATE_OF_BIRTH + " DATE,"
-                                           + KEY_TYPE + " TEXT,"
-                                           + KEY_BREED + " TEXT,"
-                                           + KEY_OFFSPRING_CTR + " TEXT,"
-                                           + KEY_STATUS + " TEXT,"
-                                           + KEY_HOUSE_NUM + " TEXT,"
-                                           + KEY_QR_CODE + " TEXT,"
-                                           + KEY_COMMENTS + " TEXT,"
-                                           + KEY_MED_HIST + " TEXT,"
-                                           + KEY_DISPLAY_PIC + " TEXT,"
-                                           + KEY_PHOTOS + " TEXT,"
-                                           + KEY_FARM + " TEXT,"
-                                           + KEY_INVESTOR + " TEXT,"
-                                           + KEY_INVESTMENT + " TEXT,"
-                                           + KEY_CREATED_AT + " DATE,"
-                                           + KEY_CREATOR + " TEXT" +
-                                        ")";
-        db.execSQL(create_livestock_details_tbl);
+        try {
+            String create_livestock_details_tbl = "CREATE TABLE " + LIVESTOCK_DETAILS +
+                    "(" + KEY_ID + " INTEGER PRIMARY KEY,"
+                    + KEY_NAME + " TEXT,"
+                    + KEY_TAG + " TEXT,"
+                    + KEY_WEIGHT + " INTEGER,"
+                    + KEY_DATE_OF_BIRTH + " DATE,"
+                    + KEY_TYPE + " TEXT,"
+                    + KEY_BREED + " TEXT,"
+                    + KEY_OFFSPRING_CTR + " INTEGER,"
+                    + KEY_STATUS + " TEXT,"
+                    + KEY_HOUSE_NUM + " TEXT,"
+                    + KEY_QR_CODE + " TEXT,"
+                    + KEY_COMMENTS + " TEXT,"
+                    + KEY_MED_HIST + " TEXT,"
+                    + KEY_DISPLAY_PIC + " TEXT,"
+                    + KEY_PHOTOS + " TEXT,"
+                    + KEY_FARM + " TEXT,"
+                    + KEY_INVESTOR + " TEXT,"
+                    + KEY_INVESTMENT + " TEXT,"
+                    + KEY_CREATED_AT + " DATE,"
+                    + KEY_CREATOR + " TEXT" +
+                    ");";
+            db.execSQL(create_livestock_details_tbl);
+        } catch (Exception e){
+            Toast.makeText(null, e.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.i(TAG, e.getMessage());
+        }
 
     }
 
@@ -88,25 +98,26 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
+        values.put(KEY_ID, livestock.getId());
         values.put(KEY_NAME, livestock.getName());
         values.put(KEY_TAG, livestock.getTag());
         values.put(KEY_WEIGHT, livestock.getWeight());
-//        values.put(KEY_DATE_OF_BIRTH, livestock.getDateOfBirth());
+        values.put(KEY_DATE_OF_BIRTH, "");
         values.put(KEY_TYPE, livestock.getType());
         values.put(KEY_BREED, livestock.getBreed());
-//        values.put(KEY_OFFSPRING_CTR, livestock.getOffSpringCounter());
+        values.put(KEY_OFFSPRING_CTR, livestock.getOffSpringCounter());
         values.put(KEY_STATUS, livestock.getStatus());
         values.put(KEY_HOUSE_NUM, livestock.getHouseNumber());
         values.put(KEY_QR_CODE, livestock.getQrCode());
-//        values.put(KEY_COMMENTS, livestock.getComments());
-//        values.put(KEY_MED_HIST, livestock.getMedicalHistories());
-//        values.put(KEY_DISPLAY_PIC, livestock.getDisplayPicture());
-//        values.put(KEY_PHOTOS, livestock.getPhotos());
-//        values.put(KEY_FARM, livestock.getFarm());
-//        values.put(KEY_INVESTOR, livestock.getInvestor());
-//        values.put(KEY_INVESTMENT, livestock.getInvestment());
-//        values.put(KEY_CREATED_AT, livestock.getCreated_at());
-//        values.put(KEY_CREATOR, livestock.getCreator());
+        values.put(KEY_COMMENTS, "");
+        values.put(KEY_MED_HIST, "");
+        values.put(KEY_DISPLAY_PIC, "");
+        values.put(KEY_PHOTOS, "");
+        values.put(KEY_FARM, "");
+        values.put(KEY_INVESTOR, "");
+        values.put(KEY_INVESTMENT, "");
+        values.put(KEY_CREATED_AT, "");
+        values.put(KEY_CREATOR, "");
 
     // Inserting Row
         db.insert(LIVESTOCK_DETAILS, null, values);
@@ -114,19 +125,42 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
     }
 
     public void updateLivestock(Livestock livestock){
+
         SQLiteDatabase db = this.getWritableDatabase();
+
         ContentValues values = new ContentValues();
 
+        values.put(KEY_ID, livestock.getId());
         values.put(KEY_NAME, livestock.getName());
         values.put(KEY_TAG, livestock.getTag());
-//        values.put(KEY_WEIGHT, livestock.getWeight());
-//        values.put(KEY_DATE_OF_BIRTH, livestock.getDateOfBirth());
+        values.put(KEY_WEIGHT, livestock.getWeight());
+        values.put(KEY_DATE_OF_BIRTH, "");
         values.put(KEY_TYPE, livestock.getType());
         values.put(KEY_BREED, livestock.getBreed());
-//        values.put(KEY_OFFSPRING_CTR, livestock.getOffSpringCounter());
+        values.put(KEY_OFFSPRING_CTR, livestock.getOffSpringCounter());
         values.put(KEY_STATUS, livestock.getStatus());
         values.put(KEY_HOUSE_NUM, livestock.getHouseNumber());
         values.put(KEY_QR_CODE, livestock.getQrCode());
+        values.put(KEY_COMMENTS, "");
+        values.put(KEY_MED_HIST, "");
+        values.put(KEY_DISPLAY_PIC, "");
+        values.put(KEY_PHOTOS, "");
+        values.put(KEY_FARM, "");
+        values.put(KEY_INVESTOR, "");
+        values.put(KEY_INVESTMENT, "");
+        values.put(KEY_CREATED_AT, "");
+        values.put(KEY_CREATOR, "");
+
+//        values.put(KEY_NAME, livestock.getName());
+//        values.put(KEY_TAG, livestock.getTag());
+//        values.put(KEY_WEIGHT, livestock.getWeight());
+//        values.put(KEY_DATE_OF_BIRTH, livestock.getDateOfBirth());
+//        values.put(KEY_TYPE, livestock.getType());
+//        values.put(KEY_BREED, livestock.getBreed());
+//        values.put(KEY_OFFSPRING_CTR, livestock.getOffSpringCounter());
+//        values.put(KEY_STATUS, livestock.getStatus());
+//        values.put(KEY_HOUSE_NUM, livestock.getHouseNumber());
+//        values.put(KEY_QR_CODE, livestock.getQrCode());
 //        values.put(KEY_COMMENTS, livestock.getComments());
 //        values.put(KEY_MED_HIST, livestock.getMedicalHistories());
 //        values.put(KEY_DISPLAY_PIC, livestock.getDisplayPicture());
@@ -145,13 +179,13 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
 
     }
 
-    public Livestock getLivestock(int id){
+    public Livestock getLivestock(String tag){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(LIVESTOCK_DETAILS, new String[] {KEY_NAME,
                         KEY_TAG,KEY_WEIGHT, KEY_DATE_OF_BIRTH, KEY_TYPE, KEY_BREED,
                         KEY_OFFSPRING_CTR, KEY_STATUS, KEY_HOUSE_NUM, KEY_COMMENTS,
                         KEY_MED_HIST, KEY_DISPLAY_PIC, KEY_FARM, KEY_INVESTOR},
-                                 KEY_TAG + "=?", new String[] {String.valueOf(id)}, null, null,null,null);
+                                 KEY_TAG + "=?", new String[] {String.valueOf(tag)}, null, null,null,null);
         if (cursor != null)
             if (cursor != null)
                 cursor.moveToFirst();
@@ -160,11 +194,11 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
 
             livestock.setName(cursor.getString(0));
             livestock.setTag(cursor.getString(1));
-            livestock.setWeight(cursor.getString(2));
+            livestock.setWeight(cursor.getDouble(2));
 //            livestock.setDateOfBirth(cursor.getString(3));
             livestock.setType(cursor.getString(4));
             livestock.setBreed(cursor.getString(5));
-            livestock.setOffSpringCounter(cursor.getString(6));
+            livestock.setOffSpringCounter(cursor.getInt(6));
             livestock.setStatus(cursor.getString(7));
             livestock.setHouseNumber(cursor.getString(8));
 //            livestock.setComments(cursor.getString(9));
@@ -178,7 +212,7 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
 
     public boolean CheckIsDataAlreadyInDBorNot(String qrCode1) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String Query = "SELECT ls_tag FROM " + LIVESTOCK_DETAILS + " WHERE " + KEY_QR_CODE + " = " + qrCode1;
+        String Query = "SELECT * FROM " + LIVESTOCK_DETAILS + " WHERE " + KEY_QR_CODE + "=" + qrCode1;
         Cursor cursor = db.rawQuery(Query, null);
         if(cursor.getCount() <= 0){
             cursor.close();
@@ -190,9 +224,22 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
 
     public ArrayList<Livestock> getAllLivestock(){
         ArrayList<Livestock> livestockList = new ArrayList<Livestock>();
-        String selectQuery = "SELECT * FROM " + LIVESTOCK_DETAILS;
+        try{
+        String selectQuery = "SELECT "+
+                             KEY_NAME + "," +
+                             KEY_TAG + "," +
+                             KEY_WEIGHT + "," +
+                             KEY_TYPE + "," +
+                             KEY_BREED + "," +
+                             KEY_OFFSPRING_CTR + "," +
+                             KEY_STATUS + "," +
+                             KEY_HOUSE_NUM +
+                             " FROM " + LIVESTOCK_DETAILS;
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
+        Cursor cursor = db.query(LIVESTOCK_DETAILS, new String[] {KEY_NAME,
+                        KEY_TAG,KEY_WEIGHT, KEY_TYPE, KEY_BREED,
+                        KEY_OFFSPRING_CTR, KEY_STATUS, KEY_HOUSE_NUM},
+                        null, null, null,null,null, null);
 
         if (cursor.moveToFirst()){
             do {
@@ -200,13 +247,13 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
 
                 livestock.setName(cursor.getString(0));
                 livestock.setTag(cursor.getString(1));
-                livestock.setWeight(cursor.getString(2));
+                livestock.setWeight(cursor.getDouble(2));
 //            livestock.setDateOfBirth(cursor.getString(3));
-                livestock.setType(cursor.getString(4));
-                livestock.setBreed(cursor.getString(5));
-                livestock.setOffSpringCounter(cursor.getString(6));
-                livestock.setStatus(cursor.getString(7));
-                livestock.setHouseNumber(cursor.getString(8));
+                livestock.setType(cursor.getString(3));
+                livestock.setBreed(cursor.getString(4));
+                livestock.setOffSpringCounter(cursor.getInt(5));
+                livestock.setStatus(cursor.getString(6));
+                livestock.setHouseNumber(cursor.getString(7));
 //            livestock.setComments(cursor.getString(9));
 //            livestock.setMedicalHistories(cursor.getString(10));
 //            livestock.setDisplayPicture(cursor.getString(11));
@@ -217,7 +264,11 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
         }
 //        System.out.println(cursor.getColumnNames() + "a");
 //        Log.d("tag", cursor + "asasda");
-        return livestockList;
 
+    }catch (Exception e){
+            Toast.makeText(null, e.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.i(TAG, e.getMessage());
+    }
+        return livestockList;
     }
 }
