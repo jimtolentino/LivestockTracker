@@ -172,9 +172,9 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
 //        values.put(KEY_CREATOR, livestock.getCreator());
 
         String[] whereClauseArgument = new String[1];
-        whereClauseArgument[0] = String.valueOf(livestock.getTag());
+        whereClauseArgument[0] = String.valueOf(livestock.getQrCode());
 
-        db.update(LIVESTOCK_DETAILS, values, KEY_TAG + "=?", whereClauseArgument);
+        db.update(LIVESTOCK_DETAILS, values, KEY_QR_CODE + "=?", whereClauseArgument);
         db.close();
 
     }
@@ -217,7 +217,7 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
         Livestock livestock = new Livestock();
 
         String[] whereClauseArgument2 = new String[1];
-        whereClauseArgument2[0] = String.valueOf(livestock.getQrCode());
+        whereClauseArgument2[0] = String.valueOf(qrCode1);
 
 //        String Query = "SELECT ls_name FROM " + LIVESTOCK_DETAILS + " WHERE ls_qr_code=" + qrCode1;
 
