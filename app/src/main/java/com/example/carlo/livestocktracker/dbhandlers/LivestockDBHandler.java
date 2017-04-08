@@ -179,18 +179,16 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
 
     }
 
-    public Livestock getLivestock(String tag){
+    public Livestock getLivestock(String qrcode){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(LIVESTOCK_DETAILS, new String[] {KEY_NAME,
                         KEY_TAG,KEY_WEIGHT, KEY_DATE_OF_BIRTH, KEY_TYPE, KEY_BREED,
                         KEY_OFFSPRING_CTR, KEY_STATUS, KEY_HOUSE_NUM, KEY_COMMENTS,
                         KEY_MED_HIST, KEY_DISPLAY_PIC, KEY_FARM, KEY_INVESTOR, KEY_QR_CODE},
-                                 KEY_TAG + "=?", new String[] {String.valueOf(tag)}, null, null,null,null);
-        if (cursor != null)
-            if (cursor != null)
-                cursor.moveToFirst();
+                                 KEY_QR_CODE + "=?", new String[] {String.valueOf(qrcode)}, null, null,null,null);
+        Livestock livestock = new Livestock();
 
-            Livestock livestock = new Livestock();
+        if (cursor.moveToFirst()){
 
             livestock.setName(cursor.getString(0));
             livestock.setTag(cursor.getString(1));
@@ -208,7 +206,9 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
 //            livestock.setInvestor(cursor.getString(13));
             livestock.setQrCode(cursor.getString(9));
 
-            return livestock;
+
+        }
+        return livestock;
     }
 
     public boolean CheckIsDataAlreadyInDBorNot(String qrCode1) {

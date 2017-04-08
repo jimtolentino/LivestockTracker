@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.example.carlo.livestocktracker.objects.Livestock;
 import com.example.carlo.livestocktracker.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static android.R.attr.fragment;
 
@@ -30,11 +32,20 @@ public class LivestockAdapter extends  RecyclerView.Adapter<LivestockAdapter.Vie
     private Livestock livestock;
     private Context context;
     private Activity activity;
+//    private HashMap<String, Livestock> mapLivestock;
 
     public LivestockAdapter(Activity activity, ArrayList<Livestock> livestockList) {
+
         this.activity = activity;
         this.livestockList = livestockList;
         this.context = activity.getApplicationContext();
+
+//
+//        mapLivestock = new HashMap<>();
+//
+//        for(Livestock livestock,) {
+//
+//        }
 
     }
 

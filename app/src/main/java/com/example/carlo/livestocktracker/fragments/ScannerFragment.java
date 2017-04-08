@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.carlo.livestocktracker.R;
 import com.example.carlo.livestocktracker.adapters.LivestockAdapter;
+import com.example.carlo.livestocktracker.dbhandlers.LivestockDBHandler;
 import com.example.carlo.livestocktracker.objects.Livestock;
 import com.google.zxing.Result;
 
@@ -31,6 +32,7 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
     private TextView tv_goatNum;
     private String tvResult;
     private ArrayList<Livestock> livestockList;
+    private Fragment fr = null;
 
 
     @Override
@@ -80,16 +82,29 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
 
     @Override
     public void handleResult (Result result) {
-        Toast.makeText(getActivity(), "Contents = " + result.getText() + ", Format = " + result.getBarcodeFormat().toString(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(), "Contents = " + result.getText() + ", Format = " + result.getBarcodeFormat().toString(), Toast.LENGTH_SHORT).show();
 
+        LivestockDBHandler db = new LivestockDBHandler(getActivity());
 
+        fr = new LivestockFragment();
 
-        Livestock livestock = new Livestock();
-//
-        FragmentManager fm = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, AddUpdLivestockGoatFragment.newInstance(livestock));
-        fragmentTransaction.commit();
+        String qrCode = result.getText();
+
+        if (db.CheckIsDataAlreadyInDBorNot(qrCode)) {
+
+            Livestock livestock  = db.getLivestock(qrCode);
+
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, AddUpdLivestockGoatFragment.newInstance(livestock));
+            fragmentTransaction.commit();
+
+        }else {
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fr);
+            fragmentTransaction.commit();
+        }
 
 
     }
