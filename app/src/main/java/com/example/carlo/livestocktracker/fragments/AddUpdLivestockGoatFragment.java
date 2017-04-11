@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,7 +36,8 @@ import static android.R.id.message;
 public class AddUpdLivestockGoatFragment extends Fragment {
 
     private TextView tv_goatNum;
-    private Button btn_save, btn_changePhoto;
+    private Button btn_save;
+    private ImageButton btn_changePhoto, btn_deleteLivestock;
     private EditText name,tag,weight,dateOfBirth,type,breed,offSpringCounter,status,houseNumber,qrCode,comments, medicalHistories,farm,investor;
     private ImageView sPhoto;
     private String qrCode1;
@@ -63,7 +65,8 @@ public class AddUpdLivestockGoatFragment extends Fragment {
             Livestock livestock = (Livestock) bundle.getSerializable(LIVESTOCK);
 
             sPhoto = (ImageView) fragmentview.findViewById(R.id.iv_lstockpic);
-            btn_changePhoto = (Button) fragmentview.findViewById(R.id.button_addphoto);
+            btn_changePhoto = (ImageButton) fragmentview.findViewById(R.id.button_addphoto);
+            btn_deleteLivestock = (ImageButton) fragmentview.findViewById(R.id.button_deletelstock);
             name = (EditText) fragmentview.findViewById(R.id.tvf_lgname);
             tag = (EditText) fragmentview.findViewById(R.id.tvf_lgtag);
             type = (EditText) fragmentview.findViewById(R.id.sp_lgtype);
@@ -109,8 +112,6 @@ public class AddUpdLivestockGoatFragment extends Fragment {
                     if (validate() == false) {
                         Livestock livestock = new Livestock();
 
-                        Toast.makeText(getActivity(), "inside if", Toast.LENGTH_LONG).show();
-
                         livestock.setId(new Random().nextInt(10));
                         livestock.setName(name.getText().toString());
                         livestock.setTag(tag.getText().toString());
@@ -145,13 +146,18 @@ public class AddUpdLivestockGoatFragment extends Fragment {
                             fragmentTransaction.commit();
 
                         } else {
-                            db.updateLivestock(livestock);
-                            Toast.makeText(getActivity(), livestock.getTag() + " is updated!",
-                                    Toast.LENGTH_LONG).show();
-                            FragmentManager fm = getFragmentManager();
-                            FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                            fragmentTransaction.replace(R.id.fragment_container, fr);
-                            fragmentTransaction.commit();
+
+                            if(db.CheckIsActive(qrCode1)){
+                                db.updateLivestock(livestock);
+                                Toast.makeText(getActivity(), livestock.getTag() + " is updated!",
+                                        Toast.LENGTH_LONG).show();
+                                FragmentManager fm = getFragmentManager();
+                                FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                                fragmentTransaction.replace(R.id.fragment_container, fr);
+                                fragmentTransaction.commit();
+                            } else{
+                                Toast.makeText(getActivity(), "Inactive livestock cannot be updated.", Toast.LENGTH_LONG).show();
+                            }
 
                         }
                     }
@@ -170,6 +176,23 @@ public class AddUpdLivestockGoatFragment extends Fragment {
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fr);
                 fragmentTransaction.commit();
+            }
+        });
+
+        btn_deleteLivestock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LivestockDBHandler db = new LivestockDBHandler(getActivity());
+
+                String qrCode1 = qrCode.getText().toString();
+
+                db.deleteLivestock(qrCode1);
+                fr = new LivestockFragment();
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fr);
+                fragmentTransaction.commit();
+
             }
         });
 

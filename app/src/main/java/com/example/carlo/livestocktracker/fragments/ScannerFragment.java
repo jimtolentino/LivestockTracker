@@ -100,9 +100,13 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
             fragmentTransaction.commit();
 
         }else {
+            Livestock livestock = new Livestock();
+
+            livestock.setQrCode(result.getText());
+
             FragmentManager fm = getFragmentManager();
             FragmentTransaction fragmentTransaction = fm.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, fr);
+            fragmentTransaction.replace(R.id.fragment_container, AddUpdLivestockGoatFragment.newInstance(livestock));
             fragmentTransaction.commit();
         }
 

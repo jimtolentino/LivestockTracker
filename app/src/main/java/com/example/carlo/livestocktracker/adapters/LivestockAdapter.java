@@ -102,7 +102,7 @@ public class LivestockAdapter extends  RecyclerView.Adapter<LivestockAdapter.Vie
 
 //                    Livestock livestock = new Livestock();
 
-                    String qrCode = livestockQrCode.getText().toString();
+//                    String qrCode = livestockQrCode.getText().toString();
 
 
                     android.app.FragmentManager fm = activity.getFragmentManager();
