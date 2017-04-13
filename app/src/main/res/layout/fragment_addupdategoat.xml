@@ -117,7 +117,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:id="@+id/et_lghouseNum"
                     android:hint="House Number"
                     android:padding="8dp"/>

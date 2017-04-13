@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import com.example.carlo.livestocktracker.R;
 import com.example.carlo.livestocktracker.fragments.AddUpdLivestockGoatFragment;
 import com.example.carlo.livestocktracker.fragments.LivestockFragment;
+import com.example.carlo.livestocktracker.fragments.NotificationsFragment;
 import com.example.carlo.livestocktracker.fragments.ScannerFragment;
 import com.example.carlo.livestocktracker.objects.Livestock;
 
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                         } else if (id == R.id.nav_scan) {
                             fr = new ScannerFragment();
                         } else if (id == R.id.nav_notifications) {
-//                            fr = new AddUpdLivestockGoatFragment();
+                            fr = new NotificationsFragment();
                         }
                         FragmentManager fm = getFragmentManager();
                         FragmentTransaction fragmentTransaction = fm.beginTransaction();

@@ -206,6 +206,7 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
                                  KEY_MED_HIST, KEY_DISPLAY_PIC, KEY_FARM, KEY_INVESTOR, KEY_QR_CODE},
                                  KEY_QR_CODE + "=? AND " + KEY_ACTIVE + "=?", new String[] {String.valueOf(qrcode),"true"}
                                  ,null, null,null,null);
+
         Livestock livestock = new Livestock();
 
         if (cursor.moveToFirst()){
@@ -224,7 +225,7 @@ public class LivestockDBHandler extends SQLiteOpenHelper {
 //            livestock.setDisplayPicture(cursor.getString(11));
 //            livestock.setFarm(cursor.getString(12));
 //            livestock.setInvestor(cursor.getString(13));
-            livestock.setQrCode(cursor.getString(9));
+            livestock.setQrCode(cursor.getString(14));
 
 
         }
