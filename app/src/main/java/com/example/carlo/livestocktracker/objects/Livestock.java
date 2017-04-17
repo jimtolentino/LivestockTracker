@@ -1,12 +1,6 @@
 package com.example.carlo.livestocktracker.objects;
 
-import java.io.File;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
-import java.util.Date;
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
 
 
 /**
@@ -15,8 +9,7 @@ import com.j256.ormlite.table.DatabaseTable;
 
 public class Livestock implements Serializable {
 
-
-
+// test
     private int id;
     private String name;
     private String tag;
