@@ -12,6 +12,7 @@ import android.view.MenuItem;
 
 import com.example.carlo.livestocktracker.R;
 import com.example.carlo.livestocktracker.fragments.AddUpdLivestockGoatFragment;
+import com.example.carlo.livestocktracker.fragments.LivestockDetailsFragment;
 import com.example.carlo.livestocktracker.fragments.LivestockFragment;
 import com.example.carlo.livestocktracker.fragments.NotificationsFragment;
 import com.example.carlo.livestocktracker.fragments.ScannerFragment;
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             Livestock livestock = new Livestock();
             FragmentManager fm = getFragmentManager();
             FragmentTransaction fragmentTransaction = fm.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, AddUpdLivestockGoatFragment.newInstance(livestock));
+            fragmentTransaction.replace(R.id.fragment_container, LivestockDetailsFragment.newInstance(livestock));
             fragmentTransaction.commit();
             return true;
         }

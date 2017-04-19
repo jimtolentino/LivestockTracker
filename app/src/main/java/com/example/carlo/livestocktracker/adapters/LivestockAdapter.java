@@ -100,10 +100,6 @@ public class LivestockAdapter extends  RecyclerView.Adapter<LivestockAdapter.Vie
 
                     int position = getAdapterPosition();
 
-//                    Livestock livestock = new Livestock();
-
-//                    String qrCode = livestockQrCode.getText().toString();
-
 
                     android.app.FragmentManager fm = activity.getFragmentManager();
                     FragmentTransaction fragmentTransaction = fm.beginTransaction();
@@ -116,11 +112,6 @@ public class LivestockAdapter extends  RecyclerView.Adapter<LivestockAdapter.Vie
             livestockTag = (TextView)view.findViewById(R.id.lstock_num);
             livestockQrCode = (TextView)view.findViewById(R.id.lstock_qrcode);
             livestockPhoto = (ImageView)view.findViewById(R.id.lstock_photo);
-
-//            Breed = (TextView)view.findViewById(R.id.detail_label_breed);
-//            Weight = (TextView)view.findViewById(R.id.detail_label_weight);
-//            Type = (TextView)view.findViewById(R.id.detail_label_type);
-//            HouseNum = (TextView)view.findViewById(R.id.detail_label_housenum);
 
 
         }
